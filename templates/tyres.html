@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Tyres {% endblock %}</h1>
+<div>
+    <form method="post">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" placeholder="" value=""></input>
+        <br>
+        <label for="serialnum">Serial Number</label>
+        <br>
+        <input type="text" name="serialnum" placeholder="" value=""></input>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <table border="1">
+        <tr>
+            <th>Tyre Name</th>
+            <th>Serial Number</th>
+        </tr>
+        {% for tyre in tyre_data %}
+        <tr>
+            <td>{{ tyre[1] }}</td>
+            <td>{{ tyre[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Vehicle {% endblock %}</h1>
+<div>
+    <form method="post">
+        <label for="fleet_code">Fleet Code</label>
+        <br>
+        <input type="text" name="fleet_code" placeholder="" value=""></input>
+        <br>
+        <label for="regnumber">Registration Number</label>
+        <br>
+        <input type="text" name="regnumber" placeholder="" value=""></input>
+        <br>
+        <label for="chassisid">Chassis ID</label>
+        <br>
+        <select name="chassisid">
+            <option>[ Select Chassis ]</option>
+            {% for chassis in chassis_data %}
+            <option value="{{chassis[0]}}">{{ chassis[1] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <table border="1">
+        <tr>
+        <th>Fleet Code</th>
+        <th>Reg. Number</th>
+        <th>Chassis</th>
+        </tr>
+        {% for vehicle in vehicle_data %}
+        <tr>
+            <td>{{ vehicle[1] }}</td>
+        
+            <td>{{ vehicle[2] }}</td>
+        
+            <td>{{ vehicle[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

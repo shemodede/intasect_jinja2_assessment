@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Tyre Duration {% endblock %}</h1>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Chassis Name</th>
+                <th>Days</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for journey in tyre_journey_data %}
+                <tr>
+                    <td>{{ journey[3] }}</td>
+                    <td>{{ journey[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

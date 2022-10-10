@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Tyre Location {% endblock %}</h1>
+<div>
+    <form method="post">
+        <label for="tyreid">Tyre</label>
+        <br>
+        <select name="tyreid">
+            <option>[ Select Tyre ]</option>
+            {% for tyre in tyre_data %}
+            <option value="{{ tyre[0] }}">{{ tyre[1] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="dateticks">Dateticks</label>
+        <br>
+        <input type="date" name="dateticks"></input>
+        <br>
+        <label for="direction">Direction</label>
+        <br>
+        <input type="number" max="1" min="0" name="direction" />
+        <br>
+        <label for="vehicleid">Vehicle</label>
+        <br>
+        <select name="vehicleid">
+            <option>[ Select Vehicle ]</option>
+            {% for vehicle in vehicle_data %}
+                <option value="{{vehicle[0]}}">{{ vehicle[2] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <table border="1">
+        <tr>
+            <th>Tyre Name</th>
+            <th>Dateticks</th>
+            <th>Direction</th>
+            <th>Vehicle Reg.</th>
+        </tr>
+        {% for tyre_location in tyre_location_data %}
+        <tr>
+            <td>{{ tyre_location[3] }}</td>
+            <td>{{ tyre_location[0] | format_date() }}</td>
+            <td>{{ tyre_location[1] }}</td>
+            <td>{{ tyre_location[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

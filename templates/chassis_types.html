@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Chassis Types {% endblock %}</h1>
+<div>
+    <form method="post">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" placeholder="4x2" value=""></input>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <table border="1">
+        <tr>
+        <th>Chassis Name</th>
+        </tr>
+        {% for chassis in chassis_data %}
+        <tr>
+            <td>{{ chassis[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}
