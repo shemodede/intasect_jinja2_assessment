@@ -51,17 +51,19 @@ def user_profile():
         return redirect(url_for('user_profile'))
     if request.method == 'GET':
         user_object = functions.get_user_object_with_id(DB_FILENAME, user_auth.userid)
-        print(user_object)
-        name = user_object[1]
-        email = user_object[2]
-        password = user_object[3]
-        loginid = user_object[4]
-        context = {
-            'name': name,
-            'email': email,
-            'password': password,
-            'loginid': loginid
-        }
+        if user_object is None:
+            pass
+        else:
+            name = user_object[1]
+            email = user_object[2]
+            password = user_object[3]
+            loginid = user_object[4]
+            context = {
+                'name': name,
+                'email': email,
+                'password': password,
+                'loginid': loginid
+            }
     return render_template('user_profile.html', **context)
 
 @app.route('/tyre_duration', methods=['POST', 'GET'])
